@@ -1,22 +1,20 @@
 # babel-plugin-file-loader [![CircleCI](https://circleci.com/gh/sheerun/babel-plugin-file-loader/tree/master.svg?style=svg)](https://circleci.com/gh/sheerun/babel-plugin-file-loader/tree/master) [![npm][npm-badge]][npm-link]
 
-Works the same as Webpack's [file-loader](https://github.com/webpack-contrib/file-loader/), but on server side. With 95% test coverage!
-
 ## Installation
 
 ```
-npm install babel-plugin-file-loader --save
+npm install babel-plugin-asset-loader --save
 ```
 
 ```
-yarn add babel-plugin-file-loader
+yarn add babel-plugin-asset-loader
 ```
 
-Then put following "file-loader" as plugin in .babelrc:
+Then put following "asset-loader" as plugin in .babelrc:
 
 ```json
 {
-  "plugins": ["file-loader"]
+  "plugins": ["asset-loader"]
 }
 ```
 
@@ -26,11 +24,10 @@ This is equivalent to following default configuration:
 {
   "plugins": [
     [
-      "file-loader",
+      "asset-loader",
       {
         "name": "[hash].[ext]",
         "extensions": ["png", "jpg", "jpeg", "gif", "svg"],
-        "publicPath": "/public",
         "outputPath": "/public",
         "context": "",
         "limit": 0
@@ -39,6 +36,9 @@ This is equivalent to following default configuration:
   ]
 }
 ```
+
+## Feature
+This will import your asset into your package using babel and feel free to use your asset.
 
 ## How it works
 
@@ -49,21 +49,7 @@ More or less as follows:
 3. Copies resource into `$ROOT/$outputPath/$name` where `$ROOT` is `.babelrc` location.
 3. Replaces `import` and `require` in code with `"$publicPath/$name"` string
 
-## Example usage
 
-```js
-import img from './file.png'
-const img2 = require('./file.svg')
-```
-
-Puts `0dcbbaa7013869e351f.png` and `8d3fe267fe578005541.svg` in the `/public` and replaces code with:
-
-```
-const img = "/public/0dcbbaa7013869e351f.png"
-const img2 = "/public/8d3fe267fe578005541.svg"
-```
-
-For real-life example go to [examples](https://github.com/sheerun/babel-plugin-file-loader/tree/master/examples).
 
 ## Options
 
@@ -72,16 +58,6 @@ For real-life example go to [examples](https://github.com/sheerun/babel-plugin-f
 Tells where to put static files. By default it's `"/public"`.
 
 This path is relative to the root of project. Setting value `null` prevents the plugin to copy the file.
-
-### publicPath
-
-Tells what prefix to output in the source. By default it's `"/public"` as well but it can be even full url, like so: `"http://cdn.example.com/foobar/"`
-
-In this case the resulting code is:
-
-```
-const img = "http://cdn.example.com/foobar/0dcbbaa7013869e351f.png"
-```
 
 ### name
 
