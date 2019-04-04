@@ -1,4 +1,4 @@
-# babel-plugin-file-loader [![CircleCI](https://circleci.com/gh/sheerun/babel-plugin-file-loader/tree/master.svg?style=svg)](https://circleci.com/gh/sheerun/babel-plugin-file-loader/tree/master) [![npm][npm-badge]][npm-link]
+# babel-plugin-asset-loader
 
 ## Installation
 
@@ -94,13 +94,6 @@ Value in byte to determine if the content is base64 inlined. In that case, the f
 
 Default is 0 which means nothing is inlined.
 
-## Contributing
-
-Yes, please!
-
 ## License
 
 [MIT](./LICENSE)
-
-[npm-badge]: https://img.shields.io/npm/v/babel-plugin-file-loader.svg?style=flat-square
-[npm-link]: https://www.npmjs.com/package/babel-plugin-file-loader
