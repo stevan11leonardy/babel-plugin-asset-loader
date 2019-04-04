@@ -82,7 +82,7 @@ For example: `[md5:hash:base58:8]` or `[hash:base36]`.
 
 ### extensions
 
-List of extension file-loader should look for in imports. All other imports are ignored.
+List of extension asset-loader should look for in imports. All other imports are ignored.
 
 ### context
 
